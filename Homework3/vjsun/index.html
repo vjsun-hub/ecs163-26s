@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pokémon Type Dashboard</title>
+
+  <!-- D3 is required for this assignment -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- D3 Sankey module for the advanced visualization -->
+  <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+
+  <style>
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+	  margin: 0;
+	  font-family: Arial, sans-serif;
+	  color: #222;
+	  background-image: url("./cute pokemon wallpaper.webp");
+	  background-size: cover;
+	  background-position: center;
+	  background-attachment: fixed;
+	}
+
+	body::before {
+	  content: "";
+	  position: fixed;
+	  inset: 0;
+	  background: rgba(255, 255, 255, 0.45);
+	  pointer-events: none;
+	  z-index: 0;
+	}
+
+    .dashboard {
+	  position: relative;
+	  z-index: 1;
+      width: 100%;
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 10px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .dashboard-header {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 8px;
+      padding: 8px 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+      backdrop-filter: blur(2px);
+    }
+
+    .dashboard-header h1 {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .dashboard-header p {
+      margin: 3px 0 0 0;
+      font-size: 12px;
+      color: #444;
+      line-height: 1.25;
+    }
+
+    .dashboard-grid {
+	  display: grid;
+	  grid-template-columns: 1.05fr 0.95fr;
+	  grid-template-rows: minmax(0, 0.47fr) minmax(0, 0.53fr);
+	  gap: 8px;
+      min-height: 0;
+	}
+
+	.chart-card {
+	  background: rgba(255, 255, 255, 0.72);
+	  border-radius: 8px;
+	  padding: 8px;
+	  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+	  overflow: hidden;
+	  min-height: 0;
+	  backdrop-filter: blur(2px);
+	}
+
+	.chart-card:nth-child(1) {
+	  grid-column: 1;
+	  grid-row: 1;
+	}
+
+	.chart-card:nth-child(2) {
+	  grid-column: 2;
+	  grid-row: 1 / span 2;
+	}
+
+	.chart-card:nth-child(3) {
+	  grid-column: 1;
+	  grid-row: 2;
+	}
+
+	.focus-view {
+	  grid-row: 1 / span 2;
+	}
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .chart-card > div {
+      width: 100%;
+      height: 100%;
+    }
+
+    .tooltip {
+	  position: absolute;
+	  z-index: 9999;
+	  max-width: 220px;
+	  background: rgba(255, 255, 255, 0.98);
+	  color: #222;
+	  border: 1px solid #ccc;
+	  border-radius: 8px;
+	  padding: 8px 10px;
+	  font-size: 12px;
+	  pointer-events: none;
+	  opacity: 0;
+	  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <header class="dashboard-header">
+      <h1>Pokémon Type Dashboard</h1>
+
+      <p class="subtitle">
+        Pokémon can have up to two elemental typings: a primary type and an optional secondary type.
+        Each Pokémon also has six core battle stats: HP, Attack, Defense, Special Attack,
+        Special Defense, and Speed. Legendary Pokémon are rare and exceptionally powerful Pokémon that are
+        typically much harder to catch. This dashboard explores Pokémon through
+        strength versus catch difficulty, average battle stat profiles, and legendary typing patterns.
+      </p>
+    </header>
+
+    <main class="dashboard-grid">
+
+      <section class="chart-card">
+        <div id="chart1"></div>
+      </section>
+
+      <section class="chart-card focus-view">
+        <div id="chart2"></div>
+      </section>
+
+      <section class="chart-card">
+        <div id="chart3"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Shared tooltip -->
+  <div class="tooltip" id="tooltip"></div>
+
+  <!-- Main JavaScript -->
+  <script src="main.js"></script>
+
+</body>
+</html>
