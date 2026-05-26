@@ -142,14 +142,14 @@ function drawStrengthCatchScatterplot(data) {
   svg.append("text")
     .attr("x", margin.left)
     .attr("y", 24)
-    .attr("font-size", "18px")
+    .attr("font-size", "24px")
     .attr("font-weight", "bold")
     .text("Strength vs. Catch Difficulty");
 
   svg.append("text")
     .attr("x", margin.left)
     .attr("y", 43)
-    .attr("font-size", "12px")
+    .attr("font-size", "16px")
     .attr("fill", "#555")
     .text("Legendary Pokemon tend to be stronger and harder to catch.");
 
@@ -220,7 +220,7 @@ function drawStrengthCatchScatterplot(data) {
   legend.append("text")
     .attr("x", 8)
     .attr("y", 16)
-    .attr("font-size", "11px")
+    .attr("font-size", "14px")
     .attr("font-weight", "bold")
     .text("Legend");
 
@@ -236,7 +236,7 @@ function drawStrengthCatchScatterplot(data) {
   legend.append("text")
     .attr("x", 26)
     .attr("y", 32)
-    .attr("font-size", "11px")
+    .attr("font-size", "12px")
     .text("Non-Legendary");
 
   legend.append("circle")
@@ -250,7 +250,7 @@ function drawStrengthCatchScatterplot(data) {
   legend.append("text")
     .attr("x", 26)
     .attr("y", 50)
-    .attr("font-size", "11px")
+    .attr("font-size", "12px")
     .text("Legendary");
 
   // Points show individual Pokemon, with Legendary Pokemon highlighted in the Legendary palette.
@@ -326,7 +326,7 @@ function drawStrengthCatchScatterplot(data) {
     .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x))
     .selectAll("text")
-    .attr("font-size", "11px");
+    .attr("font-size", "14px");
 
   // Y-axis showing each Pokemon's total battle stats.
   g.append("g")
@@ -338,7 +338,7 @@ function drawStrengthCatchScatterplot(data) {
     .attr("x", -margin.top - height / 2)
     .attr("y", 28)
     .attr("text-anchor", "middle")
-    .attr("font-size", "14px")
+    .attr("font-size", "16px")
     .attr("font-weight", "bold")
     .text("Total Battle Stats");
 
@@ -347,7 +347,7 @@ function drawStrengthCatchScatterplot(data) {
     .attr("x", margin.left + width / 2)
     .attr("y", margin.top + height + 48)
     .attr("text-anchor", "middle")
-    .attr("font-size", "14px")
+    .attr("font-size", "16px")
     .attr("font-weight", "bold")
     .text("Catch Rate (lower = harder to catch)");
 }
@@ -426,7 +426,7 @@ function drawTypeStatHeatmap(data) {
   svg.append("text")
     .attr("x", margin.left)
     .attr("y", 28)
-    .attr("font-size", "20px")
+    .attr("font-size", "24px")
     .attr("font-weight", "bold")
     .text("Average Battle Stats by Primary Type");
 
@@ -434,7 +434,7 @@ function drawTypeStatHeatmap(data) {
   svg.append("text")
     .attr("x", margin.left)
     .attr("y", 49)
-    .attr("font-size", "14px")
+    .attr("font-size", "16px")
     .attr("fill", "#555")
     .text("Darker cells indicate higher average stat values for that primary type.");
 
@@ -485,7 +485,7 @@ function drawTypeStatHeatmap(data) {
     .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x).tickFormat(d => statLabels[d]))
     .selectAll("text")
-    .attr("font-size", "12px")
+    .attr("font-size", "13px")
     .attr("transform", "rotate(-22)")
     .style("text-anchor", "end");
 
@@ -494,7 +494,7 @@ function drawTypeStatHeatmap(data) {
     .attr("class", "heatmap-y-axis")
     .call(d3.axisLeft(y))
     .selectAll("text")
-    .attr("font-size", "11px")
+    .attr("font-size", "13px")
     .style("cursor", "pointer")
     .on("click", function(event, type) {
       event.stopPropagation();
@@ -507,7 +507,7 @@ function drawTypeStatHeatmap(data) {
     .attr("x", margin.left + width / 2)
     .attr("y", margin.top + height + 50)
     .attr("text-anchor", "middle")
-    .attr("font-size", "14px")
+    .attr("font-size", "16px")
     .attr("font-weight", "bold")
     .text("Battle Stat");
 
@@ -515,9 +515,9 @@ function drawTypeStatHeatmap(data) {
   svg.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", -margin.top - height / 2)
-    .attr("y", 44)
+    .attr("y", 38)
     .attr("text-anchor", "middle")
-    .attr("font-size", "14px")
+    .attr("font-size", "16px")
     .attr("font-weight", "bold")
     .text("Primary Type");
 
@@ -562,7 +562,7 @@ function drawTypeStatHeatmap(data) {
   legend.append("text")
     .attr("x", 0)
     .attr("y", -24)
-    .attr("font-size", "11px")
+    .attr("font-size", "14px")
     .attr("font-weight", "bold")
     .text("Legend");
 
@@ -570,7 +570,7 @@ function drawTypeStatHeatmap(data) {
   legend.append("text")
     .attr("x", 0)
     .attr("y", -10)
-    .attr("font-size", "10px")
+    .attr("font-size", "12px")
     .text("Avg. stat");
 
   // Color ramp showing low-to-high average stat values.
@@ -664,7 +664,7 @@ function drawLegendarySankey(data) {
   svg.append("text")
     .attr("x", margin.left)
     .attr("y", 24)
-    .attr("font-size", "18px")
+    .attr("font-size", "22px")
     .attr("font-weight", "bold")
     .text("Legendary Pokemon Typing Flow");
 
@@ -672,7 +672,7 @@ function drawLegendarySankey(data) {
   svg.append("text")
     .attr("x", margin.left)
     .attr("y", 42)
-    .attr("font-size", "13px")
+    .attr("font-size", "14px")
     .attr("fill", "#555")
     .text("Flow shows Primary Type to Secondary Type to Legendary status.");
 
@@ -893,7 +893,7 @@ function drawLegendarySankey(data) {
       }
       return d.x0 < width / 2 ? "start" : "end";
     })
-    .attr("font-size", "10px")
+    .attr("font-size", "11px")
     .attr("fill", d => !selectedType || d.name === "Legendary" || nodeMatchesSelectedType(d.name) ? "#222" : "#777")
     .attr("font-weight", d => nodeMatchesSelectedType(d.name) ? "bold" : "normal")
     .text(d => cleanNodeName(d.name));
@@ -914,7 +914,7 @@ function drawLegendarySankey(data) {
   legend.append("text")
     .attr("x", 7)
     .attr("y", 12)
-    .attr("font-size", "10px")
+    .attr("font-size", "12px")
     .attr("font-weight", "bold")
     .text("Legend");
 
@@ -932,7 +932,7 @@ function drawLegendarySankey(data) {
   legend.append("text")
     .attr("x", 23)
     .attr("y", 26)
-    .attr("font-size", "10px")
+    .attr("font-size", "11px")
     .text("Type color");
 
   // Legend swatch for Legendary status.
@@ -949,7 +949,7 @@ function drawLegendarySankey(data) {
   legend.append("text")
     .attr("x", 23)
     .attr("y", 40)
-    .attr("font-size", "10px")
+    .attr("font-size", "11px")
     .text("Legendary");
 
   updateSankeyView = function(focusData) {
